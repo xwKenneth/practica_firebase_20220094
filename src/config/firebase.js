@@ -14,7 +14,7 @@ const firebaseConfig = {
   messagingSenderId: MESSAGING_SENDER_ID,
   appId: APP_ID  
 };
-
+//comprobar valores en consola
 console.log("Valor de configuracion", firebaseConfig);
 
 // Initialize Firebase
