@@ -16,12 +16,20 @@
     },
     "android": {
       "adaptiveIcon": {
+        "package": "com.loricode.firebase-app",
+        "versionCode": 1,
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.notkenzz.firebaseapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "c3933511-f83b-4e2c-84f3-b7446871ba73"
+      }
     }
   }
 }

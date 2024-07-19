@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import RegisterForm from '../components/RegisterForm';
+import ErrorText from '../components/ErrorText';
 
 const RegisterScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -11,10 +13,9 @@ const RegisterScreen = ({ navigation }) => {
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
- 
         const user = userCredential.user;
         console.log('Registered with:', user.email);
-        setError('');  
+        setError('');
         navigation.navigate('Login');
       })
       .catch((error) => {
@@ -26,34 +27,18 @@ const RegisterScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Register</Text>
-      {error ? <Text style={styles.errorText}>{error}</Text> : null}
-      <TextInput
-        style={styles.input}
-        placeholder="Email"
-        value={email}
-        onChangeText={setEmail}
+      <ErrorText error={error} />
+      <RegisterForm
+        email={email}
+        setEmail={setEmail}
+        password={password}
+        setPassword={setPassword}
+        handleRegister={handleRegister}
+        navigation={navigation}
       />
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
-      />
-      <View style={styles.buttonContainer}>
-        <Button title="Register" onPress={handleRegister} />
-      </View>
-      <View style={styles.buttonContainer}>
-        <Button
-          title="Go to Login"
-          onPress={() => navigation.navigate('Login')}
-        />
-      </View>
     </View>
   );
 };
-
-export default RegisterScreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -66,19 +51,6 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     textAlign: 'center',
   },
-  input: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    padding: 10,
-    marginBottom: 10,
-    borderRadius: 5,
-  },
-  buttonContainer: {
-    marginVertical: 10,
-  },
-  errorText: {
-    color: 'red',
-    marginBottom: 10,
-    textAlign: 'center',
-  },
 });
+
+export default RegisterScreen;
