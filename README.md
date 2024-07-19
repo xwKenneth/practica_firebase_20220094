@@ -54,7 +54,7 @@ Para iniciar el proyecto en modo desarrollo, ejecuta:
 ## Descarga
 Link de descarga:
     ```
-    https://expo.dev/accounts/notkenzz/projects/firebase-app/builds/f0d6cc12-374b-4e21-b0f2-503946786f80
+    (https://expo.dev/accounts/notkenzz/projects/firebase-app/builds/f0d6cc12-374b-4e21-b0f2-503946786f80/)
     ```
 ```sh
 expo start
